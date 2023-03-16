@@ -1,5 +1,5 @@
-import { connectToDB } from './../../middlewares/dbconnection';
-import { DefaultMsgResponse } from './../../types/DefaultMsgResponse';
+import { connectToDB } from './../../middlewares/connectToDB';
+import { DefaultMessageResponse } from './../../types/DefaultMessageResponse';
 import type {NextApiRequest, NextApiResponse} from 'next';
 import { UserModel } from '@/models/User';
 import CryptoJs from 'crypto-js';
@@ -10,7 +10,7 @@ type Register = {
     password : string
 }
 
-const handler = async (req : NextApiRequest, res : NextApiResponse<DefaultMsgResponse>) => {
+const handler = async (req : NextApiRequest, res : NextApiResponse<DefaultMessageResponse>) => {
     try {
         if(req.method !== 'POST'){
             return res.status(405).json({error: 'Método solicitado não existe!'});
